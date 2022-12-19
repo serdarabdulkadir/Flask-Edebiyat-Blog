@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<br>
+    <div class="jumbotron text-center">
+        <h3>Makaleler</h3>
+    </div><hr>
+    <p class="text-center">Bu blogta geliştirici olarak blog yazıları paylaşabilirsiniz ve insanlara yardımcı olabilirsiniz. </p><hr>
+{% if articles %}
+
+<form action="/Ara" methods="post" class="text-center">
+    <input type="text" name = "keyword" class="input-sm" maxlength="64" placeholder="Ara...">
+     <button type="submit" class="btn btn-danger">Ara</button>
+</form>
+<hr>
+<ul class="list-group">
+    {% for article in articles %}   
+    <li class="list-group-item disabled"><a href = "/Makaleler/{{article.id}}">{{article.title}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<div class = "alert alert-danger">Bu Blokta Henüz Makale Bulunmuyor...</div>
+{% endif %}
+
+{% endblock %}
